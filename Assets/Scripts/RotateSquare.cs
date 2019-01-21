@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RotateSquare : MonoBehaviour
 {
     public AudioListener _audioListener;
     private float _rotateSpeed;
-    public float _rotationSpeed;
+    public Slider _rotationSpeed;
 
     // Use this for initialization
     void Start()
@@ -17,7 +18,7 @@ public class RotateSquare : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rotateSpeed += Time.deltaTime * (_rotationSpeed * _audioListener._Amplitude);
+        _rotateSpeed += Time.deltaTime * ((_rotationSpeed.value*4) * _audioListener._Amplitude);
         transform.Rotate(0, 0, _rotateSpeed * Time.deltaTime, Space.World);
     }
 }

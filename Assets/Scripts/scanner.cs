@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class scanner : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class scanner : MonoBehaviour
    //public Color _scannerColor;
     private MeshRenderer _scannerRenderer;
     private Vector3 _startPosition, _endPosition;
-    private float _scannerTimer, _scannerSpeed;
+    private float _scannerTimer;
+    public Slider _scannerSpeed;
 
     private void Start()
     {
@@ -24,7 +26,7 @@ public class scanner : MonoBehaviour
 
     private void Update()
     {
-        _scannerTimer += Time.deltaTime * (_audioListener._AmplitudeBuffer);
+        _scannerTimer += Time.deltaTime * ((_scannerSpeed.value*4) * _audioListener._AmplitudeBuffer);
         _scannerObject1.transform.position = new Vector3(0, Mathf.PingPong(_scannerTimer, 4f), -0.36f);
         _scannerObject2.transform.position = new Vector3(0, -(Mathf.PingPong(_scannerTimer, 4f)), -0.36f);
         _scannerObject3.transform.position = new Vector3(Mathf.PingPong(_scannerTimer, 7.2f), 0, -0.36f);

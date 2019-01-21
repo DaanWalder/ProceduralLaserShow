@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Phyllotaxis : MonoBehaviour {
     public AudioListener _audioListener;
     private Material _trailMat;
     public Color _trailColor;
 
-    public float _degree, _scale;
+    public float _scale;
+    public Slider _degree;
     public int _numberStart;
     public int _stepSize;
     public int _maxIteration;
@@ -46,7 +48,7 @@ public class Phyllotaxis : MonoBehaviour {
 
     void SetLerpPosition()
     {
-        _phyllotaxisPosition = CalculatePhyllotaxis(_degree, _currentScale, _number);
+        _phyllotaxisPosition = CalculatePhyllotaxis(_degree.value, _currentScale, _number);
         _startPosition = this.transform.localPosition;
         _endposition = new Vector3(_phyllotaxisPosition.x, _phyllotaxisPosition.y, 0);
     }
@@ -60,7 +62,7 @@ public class Phyllotaxis : MonoBehaviour {
         _trailMat.SetColor("_TintColor", _trailColor);
         _trailRenderer.material = _trailMat;*/
         _number = _numberStart;
-        transform.localPosition = CalculatePhyllotaxis(_degree, _currentScale, _number);
+        transform.localPosition = CalculatePhyllotaxis(_degree.value, _currentScale, _number);
         if (_useLerping)
         {
             _isLerping = true;
@@ -136,7 +138,7 @@ public class Phyllotaxis : MonoBehaviour {
         }
         if (!_useLerping)
         {
-            _phyllotaxisPosition = CalculatePhyllotaxis(_degree, _currentScale, _number);
+            _phyllotaxisPosition = CalculatePhyllotaxis(_degree.value, _currentScale, _number);
             transform.localPosition = new Vector3(_phyllotaxisPosition.x, _phyllotaxisPosition.y, 0);
             _number += _stepSize;
             _currentIteration++;

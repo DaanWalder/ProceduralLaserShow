@@ -20,7 +20,7 @@ public class ColorPicker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        _colorMat.color = new Color(_redSlider.value, _greenSlider.value, _blueSlider.value, 0.9f);
-        _secondColorMat.color = new Color(_redSliderSecond.value, _greenSliderSecond.value, _blueSliderSecond.value, 0.9f);
+        _colorMat.color = new Color(_redSlider.value, _greenSlider.value, _blueSlider.value, 1);
+        _secondColorMat.color = new Color(_redSliderSecond.value, _greenSliderSecond.value, _blueSliderSecond.value, 1);
     }
 }
